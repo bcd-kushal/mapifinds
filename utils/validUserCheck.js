@@ -1,3 +1,8 @@
+const checkValidityOfUserDetails = (req) => {
+    if (req.body.firstName !== '' && req.body.lastName !== '' && req.body.address && req.body.addressCoOrd)
+        return true
+    return false
+}
 
 const checkValidityOfNewUser = (req) => {
     //check user exists in DB or not
@@ -9,10 +14,8 @@ const checkValidityOfNewUser = (req) => {
     return false
 }
 
-const checkValidityOfUserDetails = (req) => {
-    if (req.body.firstName !== '' && req.body.lastName !== '' && req.body.address && req.body.addressCoOrd)
-        return true
-    return false
-}
 
+
+
+//----------------------------------------------------------------------
 module.exports = { checkValidityOfNewUser, checkValidityOfUserDetails }
