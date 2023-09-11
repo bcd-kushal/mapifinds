@@ -2,6 +2,7 @@ import { Schema as _Schema, model } from 'mongoose';
 import { crypto } from 'crypto';
 const Schema = _Schema;
 
+//user db schema - mongoDB used ------------------------------
 const UserDB = new Schema({
     userName: { type: String, required: true, unique: true },
     firstName: { type: String, required: true },
@@ -17,6 +18,8 @@ const UserDB = new Schema({
     salt: String,
 });
 
+
+//SHA512 algo used --------------------------------------------
 UserDB.methods.setPassword = (passw) => {
     this.salt = crypto.randomBytes(16).toString('hex');
 
@@ -32,4 +35,6 @@ UserDB.methods.validPassword = (passw) => {
     return this.hash === hash;
 };
 
+
+//--------------------------------------------------------------
 export default model('User', UserDB);
